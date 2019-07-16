@@ -24,7 +24,7 @@ I have used 5 tables here:
 
 # About the Application
 
-1. Login : Based on the Role of thar user, he will be logged in either as a employee or manager. You can find the credentials in the leave_management.sql file.
+1. Login : Based on the Role of that user, he will be logged in either as a employee or manager. You can find the credentials in the leave_management.sql file.
   
 2. Employee have flexibility to apply 21 leaves a year, each leave at one and if he exceeds all 21, then he cannnot apply any more leaves. When employee applys for a leave, the status would be pending till the manager approves or rejects it. Employee can view the history of his applied leaves and also his profile. 
    
