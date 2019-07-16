@@ -1,18 +1,27 @@
 <style>
    body{
       text-align: center;
-      background-color: wheat;
+      background-color: #F4F4F4;
+      font-family:courier
+
    }
 
    table{
-      text-align: center;
+        text-align: center;
    }
 </style>
 
 <html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+</head>
 <body>
 <form action="/logout" method=post>
-    <input type="submit" value="Logout" style="float: right;">
+    <input type="submit" value="Logout" class="btn btn-primary" style="float:right;background-color: #3086af; color:#FFFFFF">
 </form>
 
 <h2>Welcome to Employee Dashboard.</h2>
@@ -22,7 +31,7 @@
 
 {% if rem_leaves > 0 %}
 <form action="/new_leave" method=get>
-    <input type="submit" value="Apply Leave"/>
+    <input type="submit" value="Apply Leave" class="btn btn-primary" style="background-color: #3086af; color:#FFFFFF"/>
 </form>
 {% else %}
 <h3>No Leaves Left to Apply. Contact Manager.</h3>
@@ -32,55 +41,55 @@
 <h3>Employee Profile : </h3>
 <table style="width:50%" border="1" align="center">
     <tr>
-        <th>First Name</th>
+        <th style="text-align:center">First Name</th>
         <td>{{ profile.first_name }}</td>
     </tr>
     <tr>
-        <th>Last Name</th>
+        <th style="text-align:center">Last Name</th>
         <td>{{ profile.last_name }}</td>
     </tr>
     <tr>
-        <th>Email ID</th>
+        <th style="text-align:center">Email ID</th>
         <td>{{ profile.employees.email_id }}</td>
     </tr>
     <tr>
-        <th>DOB</th>
+        <th style="text-align:center">DOB</th>
         <td>{{ profile.dob }}</td>
     </tr>
     <tr>
-        <th>DOJ</th>
+        <th style="text-align:center">DOJ</th>
         <td>{{ profile.doj }}</td>
     </tr>
     <tr>
-        <th>Phone Number</th>
+        <th style="text-align:center">Phone Number</th>
         <td>{{ profile.phone_number }}</td>
     </tr>
     <tr>
-        <th>Qualification</th>
+        <th style="text-align:center">Qualification</th>
         <td>{{ profile.qualification }}</td>
     </tr>
     <tr>
-        <th>Job Title</th>
+        <th style="text-align:center">Job Title</th>
         <td>{{ profile.job_title }}</td>
     </tr>
     <tr>
-        <th>Gender</th>
+        <th style="text-align:center">Gender</th>
         <td>{{ profile.gender }}</td>
     </tr>
     <tr>
-        <th>Street Address</th>
+        <th style="text-align:center">Street Address</th>
         <td>{{ profile.employee_address.street_address }}</td>
     </tr>
     <tr>
-        <th>City</th>
+        <th style="text-align:center">City</th>
         <td>{{ profile.employee_address.city }}</td>
     </tr>
     <tr>
-        <th>State</th>
+        <th style="text-align:center">State</th>
         <td>{{ profile.employee_address.state }}</td>
     </tr>
     <tr>
-        <th>Zip Code</th>
+        <th style="text-align:center">Zip Code</th>
         <td>{{ profile.employee_address.zip_code}}</td>
     </tr>
 </table>
@@ -90,12 +99,12 @@
 <h3>Emplyee Leaves History : </h3>
 <table style="width:80%" border="1px solid black" align="center">
     <tr>
-        <th>Leave Type</th>
-        <th>Leave Date</th>
-        <th>Applied Date</th>
-        <th>Reason for Leave</th>
-        <th>Status</th>
-        <th>Reason</th>
+        <th style="text-algin:center">Leave Type</th>
+        <th style="text-algin:center">Leave Date</th>
+        <th style="text-algin:center">Applied Date</th>
+        <th style="text-algin:center">Reason for Leave</th>
+        <th style="text-algin:center">Status</th>
+        <th style="text-algin:center">Reason</th>
     </tr>
     {% for leave in leaves %}
     <tr>
