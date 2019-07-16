@@ -1,73 +1,81 @@
 <style>
    body{
       text-align: center;
-      background-color: wheat;
    }
 </style>
-
 <html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+</head>
 <body>
-<form action="/logout" method=post>
-    <input type="submit" value="Logout" style="float: right;">
-</form>
+    <form action="/logout" method=post>
+        <input type="submit" value="Logout" class="btn btn-primary"
+               style="background-color: #3086af; color:#FFFFFF;float: right;">
+    </form>
 
-<h2>Welcome to Manager Dashboard.</h2>
-
-{% if error %}
-<p><strong>Error:</strong> {{ error }}
-    {% endif %}
-
-<table style="width:100%" border="1px solid black" align="center">
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Job Title</th>
-        <th>Leave Type</th>
-        <th>Leave Date</th>
-        <th>Applied Date</th>
-        <th>Reason for Leave</th>
-        <th>Status</th>
-        <th>Reason</th>
-        <th>Action</th>
-    </tr>
-    {% for leave in leaves %}
-    <tr>
-        <form action="/save-{{ leave.Leaves.leave_id }}" method=post>
-            <td style="text-align:center">{{ leave.EmployeeDetails.first_name }}</td>
-            <td style="text-align:center">{{ leave.EmployeeDetails.last_name }}</td>
-            <td style="text-align:center">{{ leave.EmployeeDetails.job_title }}</td>
-            <td style="text-align:center">{{ leave.Leaves.leave_type }}</td>
-            <td style="text-align:center">{{ leave.Leaves.leave_date }}</td>
-            <td style="text-align:center">{{ leave.Leaves.apply_date }}</td>
-            <td style="text-align:center">{{ leave.Leaves.apply_reason }}</td>
-            {% if leave.Leaves.status == "Pending" %}
-            <td style="text-align:center">
-                <select name="status" required>
-                    <option value="Pending" selected>Pending</option>
-                    <option value="Approved">Approve</option>
-                    <option value="Rejected">Reject</option>
-                </select>
-            </td>
-            {% else %}
-            <td style="text-align:center">{{ leave.Leaves.status }}</td>
-            {% endif %}
-            {% if leave.Leaves.reason == "" %}
-            <td style="text-align:center">
-                <input type="text" name="reason" size="15" value="{{ request.form.reason }}" required>
-            </td>
-            {% else %}
-            <td style="text-align:center" size="35">{{ leave.Leaves.reason }}</td>
-            {% endif %}
-            {% if leave.Leaves.reason == "" %}
-            <td style="text-align:center" width="25%">
-                <input type="submit" value="Save">
-            </td>
-            {% else %}
-            <td style="text-align:center"><input disabled value="Saved" size="15"></td>
-            {% endif %}
-        </form>
-    </tr>
-    {% endfor %}
-</table>
+    <h2 style="font-weight:bold">Welcome to Manager Dashboard.</h2>
+    <br>
+    <br>
+    {% if error %}
+    <p><strong>Error:</strong> {{ error }}
+        {% endif %}
+    <table style="width:100%" border="1px solid black" align="center">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Job Title</th>
+            <th>Leave Type</th>
+            <th>Leave Date</th>
+            <th>Applied Date</th>
+            <th>Reason for Leave</th>
+            <th>Status</th>
+            <th>Reason</th>
+            <th>Action</th>
+        </tr>
+        {% for leave in leaves %}
+        <tr>
+            <form action="/save-{{ leave.Leaves.leave_id }}" method=post>
+                <td style="text-align:center">{{ leave.EmployeeDetails.first_name }}</td>
+                <td style="text-align:center">{{ leave.EmployeeDetails.last_name }}</td>
+                <td style="text-align:center">{{ leave.EmployeeDetails.job_title }}</td>
+                <td style="text-align:center">{{ leave.Leaves.leave_type }}</td>
+                <td style="text-align:center">{{ leave.Leaves.leave_date }}</td>
+                <td style="text-align:center">{{ leave.Leaves.apply_date }}</td>
+                <td style="text-align:center">{{ leave.Leaves.apply_reason }}</td>
+                {% if leave.Leaves.status == "Pending" %}
+                <td style="text-align:center">
+                    <select name="status" required>
+                        <option value="Pending" selected>Pending</option>
+                        <option value="Approved">Approve</option>
+                        <option value="Rejected">Reject</option>
+                    </select>
+                </td>
+                {% else %}
+                <td style="text-align:center">{{ leave.Leaves.status }}</td>
+                {% endif %}
+                {% if leave.Leaves.reason == "" %}
+                <td style="text-align:center">
+                    <input type="text" name="reason" size="15" value="{{ request.form.reason }}" required>
+                </td>
+                {% else %}
+                <td style="text-align:center" size="35">{{ leave.Leaves.reason }}</td>
+                {% endif %}
+                {% if leave.Leaves.reason == "" %}
+                <td style="text-align:center" width="25%">
+                    <input type="submit" value="Save" class="btn btn-default"
+                           style="background-color: #3086af; color:#FFFFFF">
+                </td>
+                {% else %}
+                <td style="text-align:center"><input disabled value="Saved" size="5" style="text-align:center"></td>
+                {% endif %}
+            </form>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 </body>
 </html>
