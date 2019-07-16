@@ -1,0 +1,116 @@
+<style>
+   body{
+      text-align: center;
+      background-color: wheat;
+   }
+
+   table{
+      text-align: center;
+   }
+</style>
+
+<html>
+<body>
+<form action="/logout" method=post>
+    <input type="submit" value="Logout" style="float: right;">
+</form>
+
+<h2>Welcome to Employee Dashboard.</h2>
+<h4>Total Leaves Allocated : 21</h4>
+<h4>Total Remainaing Leaves : {{ rem_leaves }}</h4>
+<h4>Total Leaves Used : {{ leaves_used }}</h4>
+
+{% if rem_leaves > 0 %}
+<form action="/new_leave" method=get>
+    <input type="submit" value="Apply Leave"/>
+</form>
+{% else %}
+<h3>No Leaves Left to Apply. Contact Manager.</h3>
+{% endif %}
+
+{% if profile %}
+<h3>Employee Profile : </h3>
+<table style="width:50%" border="1" align="center">
+    <tr>
+        <th>First Name</th>
+        <td>{{ profile.first_name }}</td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td>{{ profile.last_name }}</td>
+    </tr>
+    <tr>
+        <th>Email ID</th>
+        <td>{{ profile.employees.email_id }}</td>
+    </tr>
+    <tr>
+        <th>DOB</th>
+        <td>{{ profile.dob }}</td>
+    </tr>
+    <tr>
+        <th>DOJ</th>
+        <td>{{ profile.doj }}</td>
+    </tr>
+    <tr>
+        <th>Phone Number</th>
+        <td>{{ profile.phone_number }}</td>
+    </tr>
+    <tr>
+        <th>Qualification</th>
+        <td>{{ profile.qualification }}</td>
+    </tr>
+    <tr>
+        <th>Job Title</th>
+        <td>{{ profile.job_title }}</td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td>{{ profile.gender }}</td>
+    </tr>
+    <tr>
+        <th>Street Address</th>
+        <td>{{ profile.employee_address.street_address }}</td>
+    </tr>
+    <tr>
+        <th>City</th>
+        <td>{{ profile.employee_address.city }}</td>
+    </tr>
+    <tr>
+        <th>State</th>
+        <td>{{ profile.employee_address.state }}</td>
+    </tr>
+    <tr>
+        <th>Zip Code</th>
+        <td>{{ profile.employee_address.zip_code}}</td>
+    </tr>
+</table>
+{% endif %}
+
+<br>
+<h3>Emplyee Leaves History : </h3>
+<table style="width:80%" border="1px solid black" align="center">
+    <tr>
+        <th>Leave Type</th>
+        <th>Leave Date</th>
+        <th>Applied Date</th>
+        <th>Reason for Leave</th>
+        <th>Status</th>
+        <th>Reason</th>
+    </tr>
+    {% for leave in leaves %}
+    <tr>
+        <td style="text-align:center">{{ leave.leave_type }}</td>
+        <td style="text-align:center">{{ leave.leave_date }}</td>
+        <td style="text-align:center">{{ leave.apply_date }}</td>
+        <td style="text-align:center">{{ leave.apply_reason }}</td>
+        <td style="text-align:center">{{ leave.status }}</td>
+        <td style="text-align:center">{{ leave.reason }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<br>
+<br>
+<br>
+</body>
+</html>

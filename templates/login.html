@@ -1,0 +1,64 @@
+<!doctype html>
+<style>
+   h2{
+        text-align: center;
+        color: #7C99B4;
+        font-size: 60px;
+        font-family: courier;
+       }
+   h3{
+        text-align: center;
+        color: #7C99B4;
+        font-size: 40px;
+        font-family: courier;
+       }
+   form{
+      text-align: center;
+   }
+   .bg_body{
+   background-image: url(../static/images/image.jpg);
+   width:100%;
+   height:600px;
+   background-repeat:no-repeat;
+   background-size:900px 700px;
+
+}
+</style>
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<h2 style="font-weight:bold">Leave Management System</h2>
+
+
+{% if error %}
+<p><strong>Error:</strong> {{ error }}
+    {% endif %}
+
+<div class="col-md-12 col-lg-12">
+    <div class=" bg_body col-md-9 col-lg-9">
+
+    </div>
+    <div class="col-md-3 col-lg-3" style="margin-left: -12px;margin-top: 115px;">
+        <h3 font-size="25px" style="font-weight:bold" >Login</h3>
+        <form action="/dashboard" method=post style="text-align:center">
+            <div class="form-group">
+                <input type="email" class="form-control" name=username placeholder="Email"
+                       value="{{request.form.username }}" style="width:100%;" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name=password placeholder="Password"
+                       value="{{request.form.password }}" style="width:100%;" required>
+            </div>
+            <input type="submit" class="btn btn-default" style="background-color: #3086af; color:#FFFFFF" value="Login"></input>
+        </form>
+    </div>
+</div>
+</body>
+</html>

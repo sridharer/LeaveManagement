@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<style>
+   body{
+      text-align: center;
+      background-color: wheat;
+      margin-top: 150px;
+   }
+</style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply Leave</title>
+</head>
+<body>
+    <h3>Apply Leave Below:</h3>
+    <form action = "/new_leave" method = post>
+         <dl>
+            <input hidden name="employee_id" value="{{ _id }}">
+            <dt>Leave Type:</dt>
+             <br>
+            <dd>
+                <select name="types"  required>
+                    <option value="">Select</option>
+                    <option value="Casual Leave">Casual Leave</option>
+                    <option value="Sick Leave">Sick Leave</option>
+                    <option value="Peternity Leave">Peternity Leave</option>
+                    <option value="Study Leave">Study Leave</option>
+                </select>
+            </dd>
+             <br>
+            <dt>Leave Date</dt><br>
+            <dd><input type = date name = leave_date  placeholder="Leave Date"
+                  value = "{{request.form.leave_date }}" required>
+            </dd><br>
+            <dt>Reason for Leave</dt><br>
+            <dd><input type = text name = apply_reason placeholder="Reason"
+                  value = "{{request.form.apply_reason }}" required>
+            </dd><br>
+         </dl>
+         <p><input type = submit value = Apply>   <a href="/dashboard" />Cancel</p>
+      </form>
+</body>
+</html>
