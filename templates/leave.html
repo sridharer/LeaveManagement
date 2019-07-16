@@ -9,36 +9,53 @@
 
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>Apply Leave</title>
 </head>
 <body>
-    <h3>Apply Leave Below:</h3>
-    <form action = "/new_leave" method = post>
-         <dl>
-            <input hidden name="employee_id" value="{{ _id }}">
-            <dt>Leave Type:</dt>
-             <br>
-            <dd>
-                <select name="types"  required>
-                    <option value="">Select</option>
-                    <option value="Casual Leave">Casual Leave</option>
-                    <option value="Sick Leave">Sick Leave</option>
-                    <option value="Peternity Leave">Peternity Leave</option>
-                    <option value="Study Leave">Study Leave</option>
-                </select>
+<div class="col-md-3 col-lg-3" style="margin-left: 488px;margin-top: 115px;">
+    <h3 style="font-weight:bold">Apply Leave Below</h3>
+    <br>
+    <form action="/new_leave" method=post>
+        <div class="form-group">
+
+            <dl>
+                <input hidden name="employee_id"  value="{{ _id }}" style="width:200%">
+                <dt>Leave Type</dt>
+                <dd>
+                    <select name="types" class="form-control" required>
+                        <option value="">Select</option>
+                        <option value="Casual Leave">Casual Leave</option>
+                        <option value="Sick Leave">Sick Leave</option>
+                        <option value="Peternity Leave">Peternity Leave</option>
+                        <option value="Study Leave">Study Leave</option>
+                    </select>
+                </dd>
+                </dl>
+        </div>
+        <div class="form-group">
+            <dt>Leave Date</dt>
+            <dd><input type=date name=leave_date class="form-control" placeholder="Leave Date"
+                       value="{{request.form.leave_date }} " required>
             </dd>
-             <br>
-            <dt>Leave Date</dt><br>
-            <dd><input type = date name = leave_date  placeholder="Leave Date"
-                  value = "{{request.form.leave_date }}" required>
-            </dd><br>
-            <dt>Reason for Leave</dt><br>
-            <dd><input type = text name = apply_reason placeholder="Reason"
-                  value = "{{request.form.apply_reason }}" required>
-            </dd><br>
-         </dl>
-         <p><input type = submit value = Apply>   <a href="/dashboard" />Cancel</p>
-      </form>
+        </div>
+        <div class="form-group">
+
+            <dt>Reason for Leave</dt>
+            <dd><input type=text name=apply_reason class="form-control" placeholder="Reason"
+                       value="{{request.form.apply_reason }}" required>
+            </dd>
+        </div>
+        <br>
+        </dl>
+        <input type=submit value=Apply class="btn btn-primary" style="background-color: #3086af; color:#FFFFFF">
+        <a href="/dashboard" class="btn btn-primary" style="background-color: #F65555; color:#FFFFFF">Cancel</a>
+    </form>
+</div>
 </body>
 </html>
