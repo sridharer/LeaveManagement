@@ -1,6 +1,6 @@
 from sqlalchemy.orm import sessionmaker
-from .model import engine, Leaves, Employee, EmployeeDetails
-from .constants import *
+from model import engine, Leaves, Employee, EmployeeDetails
+from constants import *
 from datetime import date
 
 Session = sessionmaker(bind=engine)
