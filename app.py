@@ -1,6 +1,6 @@
 from flask import Flask, session, request, render_template, redirect, url_for
-from lms_project.mapper import *
-from lms_project.constants import TOTAL_LEAVES
+from mapper import *
+from constants import TOTAL_LEAVES
 
 app = Flask(__name__)
 
