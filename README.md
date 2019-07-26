@@ -4,13 +4,14 @@
 
 Database Name : leave_management
 
-User Name : root
+In model.py you can find a line with mysql db details, 
+engine = create_engine('mysql://root:password@localhost/leave_management', echo=True)
+
+Username : root
 
 Password : password
 
-In model.py you can find a line with mysql db details, 
-engine = create_engine('mysql://root:password@localhost/leave_management', echo=True)
-Here root id the username and password is password.
+Here root is the username and password is password.
 
 Dump leave_management.sql file into your mysql workbench with database name as leave_management.
 
